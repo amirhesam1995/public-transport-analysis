@@ -36,7 +36,7 @@ def file_len(fname):
 
 def readConnections(gtfsDB, city, directoryGTFS, day, dayName):
     services_id = readValidityDateGtfs(gtfsDB, day, dayName, city)
-    
+
     tripID2Route = {}
     count = 0   
     for trip in gtfsDB['trips'].find({'city':city}):
@@ -47,8 +47,9 @@ def readConnections(gtfsDB, city, directoryGTFS, day, dayName):
         if count % 1000 == 0:
             #clear_output()
             print('number of trips {0}'.format(count), end="\r")
+            
         count += 1
-
+    
     listOfFile = ['stop_times.txt']
 
     if('connections' in gtfsDB.collection_names()):
@@ -62,7 +63,7 @@ def readConnections(gtfsDB, city, directoryGTFS, day, dayName):
             archive = zipfile.ZipFile(directoryGTFS + filename, 'r')
             print('\n', filename)
             for nameCSVFile in listOfFile:
-                collGtfs = gtfsDB[nameCSVFile[:-4]]
+                collGtfs = gtfsDB[nameCSVFile[:-4]].find()
                 if nameCSVFile in archive.namelist(): 
                     count = 0
                     #try:
@@ -73,6 +74,7 @@ def readConnections(gtfsDB, city, directoryGTFS, day, dayName):
                     res["city"] = city
                     res["file"] = filename
                     res = list(v for v in res.to_dict("index").values())
+                    res = list(collGtfs)
                     print("converted...")
                     tot = len(res)
                     for i, elem in enumerate(res): #.iterrows():

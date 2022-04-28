@@ -8,6 +8,10 @@ import folium
 import numpy as np
 import math
 
+
+
+
+
 def loadGtfsFile(gtfsDB, directoryGTFS, city, listOfFile):
     for nameC in listOfFile:
         #pass
@@ -39,6 +43,7 @@ def loadGtfsFile(gtfsDB, directoryGTFS, city, listOfFile):
         gtfsDB['trips'].create_index([("service_id", pym.ASCENDING)])
         gtfsDB['trips'].create_index([("city", pym.ASCENDING)])
 
+
 def removingStopsNoConnections(gtfsDB, city):
     count_rem = {}
     count = 0
@@ -54,6 +59,7 @@ def removingStopsNoConnections(gtfsDB, city):
 
         print( '{0}-removed stops{1}'.format(count, count_rem),end="\r")
         count += 1
+
 
 def setPosField(gtfsDB, city):
     pos = 0
@@ -108,6 +114,7 @@ def returnStopsList(gtfsDB, city):
     print ('tot stop', len(stopsList),' stop error :', count_err)
     return stopsList
 
+
 def boundingBoxStops(stopsList):
     minLat = +200
     minLon = +200
@@ -125,6 +132,8 @@ def boundingBoxStops(stopsList):
 
 from math import cos
 from folium.plugins import FastMarkerCluster
+
+
 def mapStops(bbox, stopsList):
     minLat = bbox[3]
     minLon = bbox[0]
@@ -141,6 +150,7 @@ def mapStops(bbox, stopsList):
         markerList.append([aa[1],aa[2]])
     points = FastMarkerCluster(markerList, None).add_to(map_stops)
     return map_stops
+
 
 def computeNeigh(gtfsDB, urlServerOsrm, distanceS, tS, city):
     
@@ -300,7 +310,6 @@ def listPointsStopsN(gtfsDB, city):
                 count_error += 1
                 print( 'error!!', count_error, stop['stopN'][i]['time'], i)
         print ('fill stop neighbors {0}'.format(stop['pos']),end="\r")
-
 
     for point in gtfsDB['points'].find({'city':city}).sort([('pos',1)]):
         for i,stopN in enumerate(point['stopN']):

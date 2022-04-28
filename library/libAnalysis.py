@@ -8,6 +8,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 import numpy as np
 
+
 def distBin(Col, match, field, binStep):
     result = Col.aggregate([{
         '$match':match
@@ -44,20 +45,24 @@ def giveVarExpon(maxValue):
         return maxValue * np.exp(-b*xx**a)
     return varExpon
 
+
 def giveVarExponOneVar(maxValue, sigma):
     def varExpon(xx, a):
         return maxValue * np.exp(-sigma*xx**a)
     return varExpon
+
 
 def giveVarExponShift(maxValue, sigma):
     def varExpon(xx, a, b):
         return maxValue * np.exp(-sigma*(xx)**a) + b
     return varExpon
 
+
 def giveVarExponShift3(maxValue):
     def varExpon(xx, a, b, sigma):
         return maxValue * np.exp(-sigma*(xx)**a) + b
     return varExpon
+
 
 def stretExp(xx, beta, tau):
         return np.exp(-(xx / tau)**beta)
@@ -104,7 +109,6 @@ def fitAndPlot(quantity, timeDist, gtfsDB, city, funct, p0 = [1,1], nameFunc = "
     sns.set_style("ticks")
     sns.set_context("paper", font_scale=2)
     fig = plt.figure(figsize=(17, 9))
-
 
     x = []
     y = []
@@ -156,6 +160,7 @@ def fitAndPlot(quantity, timeDist, gtfsDB, city, funct, p0 = [1,1], nameFunc = "
 
 def fitAndPlotLinear(x, y, bins = 30, p0=[1,0]):
 
+
     n, _ = np.histogram(x, bins=bins)
     sy, _ = np.histogram(x, bins=bins, weights=y)
     sy2, _ = np.histogram(x, bins=bins, weights=y*y)
@@ -189,7 +194,6 @@ def fitAndPlotLinear(x, y, bins = 30, p0=[1,0]):
     stringtoPrint += "\n beta = {0:.2f}".format(popt[1])
     stringtoPrint_hist += "\n alpha = {0:.2f}".format(popt_hist[0])
     stringtoPrint_hist += "\n beta = {0:.2f}".format(popt_hist[1])
-
 
     xfine = np.linspace(centers_bin[0], max(x), 1000) 
     (fig, axs) = plt.subplots(1,2, figsize=(10,4))
@@ -257,6 +261,7 @@ def allTimeDist(quantity,timeDist, gtfsDB, city):
     return {'plt':plt};
 
 
+
 def expDecayTimeDist(quantity,timeDist, gtfsDB, city):
     import matplotlib.pyplot as plt
     import matplotlib
@@ -280,13 +285,13 @@ def expDecayTimeDist(quantity,timeDist, gtfsDB, city):
     ax.plot(x, y,  'bo')
     sns.jointplot(x=np.array(x), y=np.array(y), kind="hex");
 
-
     sns.set_style("ticks")
     sns.set_context("paper", font_scale=3)
     #sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5})
 
     #plt.rc('text', usetex=True)
     fig,ax=plt.subplots(ncols=1, nrows=1, figsize=(10,7))
+
 
 
     x=np.array(x)
@@ -344,13 +349,13 @@ def gaussDecayTimeDist(quantity,timeDist, gtfsDB, city):
     ax.plot(x, y,  'bo')
     sns.jointplot(x=np.array(x), y=np.array(y), kind="hex");
 
-
     sns.set_style("ticks")
     sns.set_context("paper", font_scale=3)
     #sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5})
 
     #plt.rc('text', usetex=True)
     fig,ax=plt.subplots(ncols=1, nrows=1, figsize=(10,7))
+
 
 
     x=np.array(x)
@@ -408,13 +413,13 @@ def expVarDecayTimeDist(quantity,timeDist, gtfsDB, city):
     ax.plot(x, y,  'bo')
     sns.jointplot(x=np.array(x), y=np.array(y), kind="hex");
 
-
     sns.set_style("ticks")
     sns.set_context("paper", font_scale=3)
     #sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5})
 
     #plt.rc('text', usetex=True)
     fig,ax=plt.subplots(ncols=1, nrows=1, figsize=(10,7))
+
 
 
     x=np.array(x)

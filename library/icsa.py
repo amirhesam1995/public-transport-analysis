@@ -1,6 +1,5 @@
 from libAccessibility import arrayTimeCompute, ListFunctionAccessibility
 from libHex import area_geojson
-
 import math
 import time
 import numpy
@@ -97,6 +96,10 @@ def coumputeTimeOnePoint(point, startTime, timeS, timeP, arrayCC, P2PPos, P2PTim
 
     #print("timeS {0},startTime {1},arrayCC {2}, S2SPos {3}, S2STime {4}".format(timeS,startTime,arrayCC, S2SPos, S2STime))
     #print("setted the initial timeS time... starting core CSA")
+    startTime = numpy.int32(startTime)
+    arrayCC = arrayCC.astype(numpy.int64)
+
+
     timeS = coreICSA(timeS,startTime,arrayCC, S2SPos, S2STime)
     #print("ends core CSA... start updating points time")
 
