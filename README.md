@@ -22,6 +22,7 @@ Take a look at the <a href="http://nbviewer.jupyter.org/github/ocadni/public-tra
 You will see `running and waiting for requests` message, which means that OSRM server is ready
 
 3. Install Mongo DB `sudo apt-get install mongodb`
+4. Install `pip install IPython`
 
 
 ### Optional
