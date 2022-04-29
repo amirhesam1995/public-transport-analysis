@@ -18,9 +18,15 @@ For computing the "Sociality Score" the population distribution in the city is n
 The population must be stored in a mongodb collections, where each element is a Future of [geojson](https://docs.mongodb.com/manual/reference/geojson/) and in the field "geometry" there should be the a Polygon geometry of the corresponding section. Then the value of the population must be stored in the sub-field of the "properties" field of the element.
 
 # First run for Budapest
-## installation
+## OSRM
 1. Clone this repository.
 2. Go to `public-transport-analysis/osrm` and run the commands annotated in `Docker-instructions.txt` 
+
+You will see `running and waiting for requests` message, which means that OSRM server is ready
+
+
+## MONGO DB
+Install Mongo DB `sudo apt-get install mongodb`
     
 ## Compute travel time distances and all the accessbility quantities
 1. run ```jupyter-notebook``` and open the public-transport-analysis notebook.
