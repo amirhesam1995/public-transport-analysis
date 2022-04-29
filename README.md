@@ -26,7 +26,8 @@ You will see `running and waiting for requests` message, which means that OSRM s
 
 3. Install Mongo DB `sudo apt-get install mongodb`
 4. Open file `public-transport-city.py` and install the libraries that are imported at the beginning (use python3!)
-5. To compute the accessibility scores, run `python3 public-transport-city.py`
+     ATTENTION: Do not install the latest version of `pymongo`. Install instead the following `pip install pymongo==3.12.3`
+6. To compute the accessibility scores, run `python3 public-transport-city.py`
     
 ## Compute travel time distances and all the accessbility quantities
 1. run ```jupyter-notebook``` and open the public-transport-analysis notebook.
