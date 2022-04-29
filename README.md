@@ -20,7 +20,7 @@ The population must be stored in a mongodb collections, where each element is a 
 # First run for Budapest
 ## installation
 1. Clone this repository.
-2. Go to `public-transport-analysis/osrm` and run the commands annotated in `docker-instructions.txt` 
+2. Go to `public-transport-analysis/osrm` and run the commands annotated in `ducker.txt` 
     
 ## Compute travel time distances and all the accessbility quantities
 1. run ```jupyter-notebook``` and open the public-transport-analysis notebook.
