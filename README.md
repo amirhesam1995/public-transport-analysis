@@ -13,11 +13,8 @@ Take a look at the <a href="http://nbviewer.jupyter.org/github/ocadni/public-tra
 1. [MongoDB](https://www.mongodb.com/download-center#community) with the privileges to create and modified a database.
 1. Docker
 1. All the python library needed, listed at the beginning of the notebook.
-### Optional
-For computing the "Sociality Score" the population distribution in the city is nedeed. The population distribution can be download for instance from [SEDAC](http://sedac.ciesin.columbia.edu/data/collection/gpw-v4) or for Europe form [EUROSTAT](http://ec.europa.eu/eurostat/statistics-explained/index.php/Population_grids). The public-transport-analysis notebook automatically project the population in a specific tesselletion to the hexagons tesselletions used. The population in each hexagons will be the sum of the population of the overlapping sections proportional to overlapping area.
-The population must be stored in a mongodb collections, where each element is a Future of [geojson](https://docs.mongodb.com/manual/reference/geojson/) and in the field "geometry" there should be the a Polygon geometry of the corresponding section. Then the value of the population must be stored in the sub-field of the "properties" field of the element.
 
-# First run for Budapest
+
 ## Installation
 1. Clone this repository.
 2. Go to `public-transport-analysis/osrm` and run the commands annotated in `Docker-instructions.txt` 
@@ -25,9 +22,17 @@ The population must be stored in a mongodb collections, where each element is a 
 You will see `running and waiting for requests` message, which means that OSRM server is ready
 
 3. Install Mongo DB `sudo apt-get install mongodb`
-4. Open file `public-transport-city.py` and install the libraries that are imported at the beginning (use python3!)
+
+
+### Optional
+For computing the "Sociality Score" the population distribution in the city is nedeed. The population distribution can be download for instance from [SEDAC](http://sedac.ciesin.columbia.edu/data/collection/gpw-v4) or for Europe form [EUROSTAT](http://ec.europa.eu/eurostat/statistics-explained/index.php/Population_grids). The public-transport-analysis notebook automatically project the population in a specific tesselletion to the hexagons tesselletions used. The population in each hexagons will be the sum of the population of the overlapping sections proportional to overlapping area.
+The population must be stored in a mongodb collections, where each element is a Future of [geojson](https://docs.mongodb.com/manual/reference/geojson/) and in the field "geometry" there should be the a Polygon geometry of the corresponding section. Then the value of the population must be stored in the sub-field of the "properties" field of the element.
+
+## First run for Budapest
+
+1. Open file `public-transport-city.py` and install the libraries that are imported at the beginning (use python3!)
      ATTENTION: Do not install the latest version of `pymongo`. Install instead the following `pip install pymongo==3.12.3`
-6. To compute the accessibility scores, run `python3 public-transport-city.py`
+2. To compute the accessibility scores, run `python3 public-transport-city.py`
     
 ## Compute travel time distances and all the accessbility quantities
 1. run ```jupyter-notebook``` and open the public-transport-analysis notebook.
