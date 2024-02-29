@@ -32,8 +32,17 @@ The population must be stored in a mongodb collections, where each element is a 
 ## First run for Budapest
 
 1. Open file `public-transport-city.py` and install the libraries that are imported at the beginning (use python3!)
-     ATTENTION: Do not install the latest version of `pymongo`. Install instead the following `pip install pymongo==3.12.3`
-2. To compute the accessibility scores, run `python3 public-transport-city.py`
+     ATTENTION: You need to use specific versions of the following libraries:
+   	a.	pymongo   V 3.12.1
+b.	pandas    V 1.5.3
+c.	folium    V 0.14.0 
+d.	numpy     V 1.24.3 
+e.	requests  V 2.29.0
+f.	numba     V 0.57.0
+h.	geopy     V 2.4.1
+i.	shapely   V 1.8.0
+j.	datetime  V 5.4
+3. To compute the accessibility scores, run `python3 public-transport-city.py`
     
 ## Compute travel time distances and all the accessbility quantities
 1. run ```jupyter-notebook``` and open the public-transport-analysis notebook.
