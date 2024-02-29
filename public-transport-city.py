@@ -29,7 +29,7 @@ from folium.plugins import FastMarkerCluster
 from datetime import datetime
 from geopy.distance import geodesic, great_circle
 
-first_run = True
+first_run = True  # Set it to false if you have already filled the database and you only want to read it
 
 # # Data:
 # 
