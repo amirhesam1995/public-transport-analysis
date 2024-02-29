@@ -29,6 +29,8 @@ from folium.plugins import FastMarkerCluster
 from datetime import datetime
 from geopy.distance import geodesic, great_circle
 
+first_run = True
+
 # # Data:
 # 
 # 1. gtfs file of the city. 
@@ -118,46 +120,46 @@ gtfsDB["POP"].insert_many(features)
 
 # In[9]:
 
-
-from libStopsPoints import loadGtfsFile
-
-listOfFile = ['stops.txt', 'routes.txt', 'trips.txt', 'calendar.txt', 'calendar_dates.txt',
-              'stop_times.txt']  # , 'stop_times.txt']#, 'shapes.txt']
-loadGtfsFile(gtfsDB, directoryGTFS, city, listOfFile)
-
-# ## Fill the database with the connections
-
-# In[10]:
-
-
-from libConnections import readConnections
-
-readConnections(gtfsDB, city, directoryGTFS, day, dayName)
-
-# ## remove stops with no connections
-# #### and add to each stop the pos field
-
-# In[12]:
-
-
-from libStopsPoints import removingStopsNoConnections, setPosField, removeStopsOutBorder
-
-# removeStopsOutBorder(gtfsDB, city, 'OECD_city', ["commuting_zone", "city_core"])
-removingStopsNoConnections(gtfsDB, city)
-setPosField(gtfsDB, city)
-
-# In[13]:
-
-
-from libConnections import updateConnectionsStopName
-
-updateConnectionsStopName(gtfsDB, city)
-
-# # Tassel with exagons
-
-# ### List of all stops
-
-# In[14]:
+if (first_run == True):
+    from libStopsPoints import loadGtfsFile
+    
+    listOfFile = ['stops.txt', 'routes.txt', 'trips.txt', 'calendar.txt', 'calendar_dates.txt',
+                  'stop_times.txt']  # , 'stop_times.txt']#, 'shapes.txt']
+    loadGtfsFile(gtfsDB, directoryGTFS, city, listOfFile)
+    
+    # ## Fill the database with the connections
+    
+    # In[10]:
+    
+    
+    from libConnections import readConnections
+    
+    readConnections(gtfsDB, city, directoryGTFS, day, dayName)
+    
+    # ## remove stops with no connections
+    # #### and add to each stop the pos field
+    
+    # In[12]:
+    
+    
+    from libStopsPoints import removingStopsNoConnections, setPosField, removeStopsOutBorder
+    
+    # removeStopsOutBorder(gtfsDB, city, 'OECD_city', ["commuting_zone", "city_core"])
+    removingStopsNoConnections(gtfsDB, city)
+    setPosField(gtfsDB, city)
+    
+    # In[13]:
+    
+    
+    from libConnections import updateConnectionsStopName
+    
+    updateConnectionsStopName(gtfsDB, city)
+    
+    # # Tassel with exagons
+    
+    # ### List of all stops
+    
+    # In[14]:
 
 
 from libStopsPoints import returnStopsList
