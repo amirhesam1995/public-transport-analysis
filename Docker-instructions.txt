@@ -8,7 +8,7 @@ docker run -t -i -p 5000:5000 -v "${PWD}:/data" osrm/osrm-backend osrm-routed --
 
 
 
-# If you are instead in Windows, run (as administrator)
+# If you are instead in Windows, run in the normal "command prompt" run as administrator (DO NOT USE Powershell)
 
 docker run -t -v "%cd%:/data" osrm/osrm-backend osrm-extract -p /opt/foot.lua /data/Budapest.osm.pbf
 docker run -t -v "%cd%:/data" osrm/osrm-backend osrm-partition /data/Budapest.osrm
