@@ -33,23 +33,24 @@ The population must be stored in a mongodb collections, where each element is a 
 
 1. Open file `public-transport-city.py` and install the libraries that are imported at the beginning (use python3!)
      ATTENTION: You need to use specific versions of the following libraries:
-   	a.	pymongo   V 3.12.1
 
-b.	pandas    V 1.5.3
+		a.	pymongo   V 3.12.1
 
-c.	folium    V 0.14.0 
+		b.	pandas    V 1.5.3
 
-d.	numpy     V 1.24.3 
+		c.	folium    V 0.14.0 
 
-e.	requests  V 2.29.0
+		d.	numpy     V 1.24.3 
 
-f.	numba     V 0.57.0
+		e.	requests  V 2.29.0
 
-h.	geopy     V 2.4.1
+		f.	numba     V 0.57.0
 
-i.	shapely   V 1.8.0
+		h.	geopy     V 2.4.1
 
-j.	datetime  V 5.4
+		i.	shapely   V 1.8.0
+
+		j.	datetime  V 5.4
 
 2. Adjust the date indicated in the line `day = ...` so that it corresponds to a date that is contained in the GTFS file.
 
