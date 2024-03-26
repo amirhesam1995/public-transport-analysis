@@ -54,11 +54,13 @@ The population must be stored in a mongodb collections, where each element is a 
 
 2. Adjust the date indicated in the line `day = ...` so that it corresponds to a date that is contained in the GTFS file.
 
-3. To compute the accessibility scores, run `python3 public-transport-city.py`. Inside that script there is a variable `first_run`. By default it is True, which implies the mongo db is modified (adding links, connections, nodes, etc.). However, if you have already filled the databse, e.g., you are running the script for a second time, you do not need to fill the database again: in this case, set ``first_run=False` before running the script.
+3. Ensure that the reference system of the population file is in `EPSG:4326`. If your population files are in another reference system, you should first convert them, using some external tools (e.g., qGIS).
 
-4. Results are written in the mongo-db, in the table `points`, where fields concerning sociality and velocity score are added
+4. To compute the accessibility scores, run `python3 public-transport-city.py`. Inside that script there is a variable `first_run`. By default it is True, which implies the mongo db is modified (adding links, connections, nodes, etc.). However, if you have already filled the databse, e.g., you are running the script for a second time, you do not need to fill the database again: in this case, set ``first_run=False` before running the script.
 
-5. Use `public-transport-city.ipnb` to visualize the accessibility map
+5. Results are written in the mongo-db, in the table `points`, where fields concerning sociality and velocity score are added
+
+6. Use `public-transport-city.ipnb` to visualize the accessibility map
     
 ## Compute travel time distances and all the accessbility quantities
 1. run ```jupyter-notebook``` and open the public-transport-analysis notebook.
