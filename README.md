@@ -60,7 +60,7 @@ The population must be stored in a mongodb collections, where each element is a 
 
 5. Results are written in the mongo-db, in the table `points`, where fields concerning sociality and velocity score are added
 
-6. Use `public-transport-city.ipnb` to visualize the accessibility map, by skipping the section "COMPUTATION OF ACCESSIBILITY" (you should run all the code before "COMPUTATION OF ACCESSIBILITY" and then the code starting from "RESULTS")
+6. Use `public-transport-city.ipnb` to visualize the accessibility map
     
 ## Compute travel time distances and all the accessbility quantities
 1. run ```jupyter-notebook``` and open the public-transport-analysis notebook.
